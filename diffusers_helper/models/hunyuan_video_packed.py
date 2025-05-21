@@ -792,7 +792,7 @@ class HunyuanVideoTransformer3DModelPacked(ModelMixin, ConfigMixin, PeftAdapterM
 
         self.inner_dim = inner_dim
         self.use_gradient_checkpointing = False
-        self.enable_teacache = False
+        self.enable_teacache = True
 
         if has_image_proj:
             self.install_image_projection(image_proj_dim)
@@ -800,7 +800,7 @@ class HunyuanVideoTransformer3DModelPacked(ModelMixin, ConfigMixin, PeftAdapterM
         if has_clean_x_embedder:
             self.install_clean_x_embedder()
 
-        self.high_quality_fp32_output_for_inference = False
+        self.high_quality_fp32_output_for_inference = True
 
     def install_image_projection(self, in_channels):
         self.image_projection = ClipVisionProjection(in_channels=in_channels, out_channels=self.inner_dim)
